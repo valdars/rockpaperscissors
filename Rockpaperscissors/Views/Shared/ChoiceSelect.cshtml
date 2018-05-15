@@ -1,0 +1,21 @@
+﻿@model Rockpaperscissors.Components.PlayerHelper.ChoiceSelectViewModel
+
+@{
+    ViewData["Title"] = "Select your hand";
+    var errorClass = Model.IsError ? "has-error" : "";
+}
+<h2>Round @Model.RoundNo</h2>
+<h3>Player @((int)Model.Player), choose your hand</h3>
+
+<form method="post" action="@Model.RedirectUrl">
+    @foreach (var choice in Model.Choices)
+    {
+        <div class="radio @errorClass">
+            <label>
+                <input type="radio" name="choice" value="@choice.id">
+                @choice.title
+            </label>
+        </div>
+    }
+    <input type="submit" value="Choose" class="btn btn-default" />
+</form>

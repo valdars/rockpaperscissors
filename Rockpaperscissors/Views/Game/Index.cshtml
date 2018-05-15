@@ -1,0 +1,18 @@
+﻿@model StartGameViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-controller="Game" asp-action="StartGame" method="post">
+    <div class="form-group">
+        <label for="player1select">Select player 1:</label>
+        <select class="form-control" id="player1select" name="player1" asp-items="Model.PlayerSelectItems"></select>
+    </div>
+
+    <div class="form-group">
+        <label for="player2select">Select player 2:</label>
+        <select class="form-control" id="player2select" name="player2" asp-items="Model.PlayerSelectItems"></select>
+    </div>
+
+    <button type="submit" class="btn btn-default">Start game</button>
+</form>

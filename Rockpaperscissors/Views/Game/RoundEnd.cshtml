@@ -1,0 +1,25 @@
+﻿@model Rockpaperscissors.Models.RoundEndViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>End of round @Model.RoundNo</h2>
+@foreach(var player in Model.Round.Choices.Keys)
+{
+    @:<p>Player @player chose @Model.Choices.First(x => x.id == Model.Round.Choices[player]).title</p>
+
+}
+<p class="lead">
+    @if (Model.Winner == 0)
+    {
+        @:It's a tie
+    }
+    else
+    {
+        @:Winner is player @Model.Winner
+    }
+</p>
+<div>
+    @Html.ActionLink("Continue", "NewRound", new { id = Model.GameState.Id })
+</div>

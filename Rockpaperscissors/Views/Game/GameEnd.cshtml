@@ -1,0 +1,36 @@
+﻿@model Rockpaperscissors.Models.GameEndViewModel
+
+@{
+    ViewData["Title"] = "Game end";
+}
+
+<h2>Game end</h2>
+
+@foreach (var item in Model.GameState.Rounds.Select((round, i) => new { i, round }))
+{
+    <p>
+        <text>Round @(item.i + 1) winner:</text>
+        @if (item.round.Winner == 0)
+        {
+            @:Tie
+        }
+        else
+        {
+            @String.Format("Player {0}", item.round.Winner)
+        }
+    </p>
+}
+<p class="lead">
+    @if (Model.Winner == 0)
+    {
+        @:Game ends with a tie
+    }
+    else
+    {
+        @:Winner is player @Model.Winner
+    }
+</p>
+
+<div>
+    <a asp-action="Index">Start new game</a>
+</div>
